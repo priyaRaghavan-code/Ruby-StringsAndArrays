@@ -5,7 +5,7 @@ class Common_Element
 	end
 
 	def -(obj)
-		return self.array1.intersection(obj.array1)
+		return self.array1.&(obj.array1)
 	end
 
 end
