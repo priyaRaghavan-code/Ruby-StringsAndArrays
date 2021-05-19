@@ -1,5 +1,5 @@
 def find_maximum_repeating_number(numbers)
-     numbers.inject({}) {|h,v| 
+     numbers.inject({}) { |h,v| 
         h[v] = numbers.count(v)
         h
     }

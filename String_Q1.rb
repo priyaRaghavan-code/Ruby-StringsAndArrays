@@ -5,8 +5,8 @@ string_arr = get_string.split(" ")
 answer = ""
 
 string_arr.each do |word|
-    answer+=word.reverse()
-    answer+=" "
+    answer += word.reverse()
+    answer += " "
 end
 
 puts answer

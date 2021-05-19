@@ -4,7 +4,7 @@ string_arr = get_string.split(" ")
 answer_map = {}
 
 string_arr.each do |word|
-    if word!="." || word!=" "
+    if word != "." || word != " "
         if answer_map.has_key?word
             answer_map[word]+=1
         else
@@ -13,4 +13,4 @@ string_arr.each do |word|
     end
 end
 
-puts ("Total number of different words are "+answer_map.size().to_s)
+puts ("Total number of different words are " + answer_map.size().to_s)

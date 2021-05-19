@@ -1,5 +1,6 @@
 class Common_Element
 	attr_accessor :array1
+	
 	def initialize(array1)
 		@array1 = array1
 	end

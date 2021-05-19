@@ -15,4 +15,4 @@ n.upto(numbers.length-2) do |number|
     end
 end
 
-print ("Two numbers with biggest difference are "+numbers[max_index].to_s+ " and "+numbers[max_index+1].to_s+ " Their difference is "+(numbers[max_index]-numbers[max_index+1]).to_s)
+print ("Two numbers with biggest difference are " + numbers[max_index].to_s + " and " + numbers[max_index+1].to_s + " Their difference is "+ (numbers[max_index]-numbers[max_index+1]).to_s)

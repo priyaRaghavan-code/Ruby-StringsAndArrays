@@ -10,10 +10,10 @@ n = numbers_array.length - 1
 n.downto(0) do |i|
     if (numbers_array[start_of_array]-target).abs() <= (numbers_array[end_of_array]-target).abs()
         temp_array[i] = numbers_array[end_of_array]
-        end_of_array-=1
+        end_of_array -= 1
     else
         temp_array[i] = numbers_array[start_of_array]
-        start_of_array+=1
+        start_of_array += 1
     end
 end
 
