@@ -15,7 +15,8 @@ class ReadResume
         reader = PDF::Reader.new(file)
         reader.pages.each do |page|
          dictionary_file = {:file_name =>file,:ocr_text=>page.text}
-	       File.write("#{file}.json",JSON.dump(dictionary_file))
+	 file.slice! ".pdf"
+	 File.write("#{file}.json",JSON.dump(dictionary_file))
          #File.open("#{file}.json","w") { |files| files.write(dictionary_file.to_json) }
          p "completed Writing"
         end
@@ -32,8 +33,9 @@ class ReadResume
         if accepted_formats.include?File.extname(file)
 	  p file
           file_data = File.read(file)
+	  p file
           file_data_in_json = JSON.parse(file_data)
-	  file_name =  file_data_in_json['file_name']
+	  file_name =  file_data_in_json['file_name']+".pdf"
 	  file_data = file_data_in_json['ocr_text']
          # con.exec "INSERT INTO resume_table(file_name,resume_text) values (#{file_data_in_json['file_name']}, #{file_data_in_json['ocr_text']});"
 	  con.exec "INSERT INTO resume_table(file_name,resume_text) values ('#{file_name}','#{file_data}');"
@@ -50,5 +52,5 @@ class ReadResume
 end
 pdf_resume = ReadResume.new("/home/ubuntu/Ruby-StringsAndArrays/ReadResume")
 connect_db = ReadResume.new("/home/ubuntu/Ruby-StringsAndArrays/ReadResume")
-pdf_resume.read_text_from_pdf
+#pdf_resume.read_text_from_pdf
 connect_db.connect_with_db
