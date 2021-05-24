@@ -17,16 +17,15 @@ class ReadResume
          dictionary_file = {"file_name":file,"ocr_text":page.text}
          dictionary_file.to_json
          system("touch #{file}.json")
-         File.open("D:/Ruby-StringsAndArrays/ReadResume/#{file}.json","w") { |file| file.write(dictionary_file.to_json) }
+         File.open("#{file}.json","w") { |file| file.write(dictionary_file.to_json) }
          p "completed Writing"
         end
       end
     end
   end
-  
   def connect_with_db
     begin
-      con = PGconn.connect("3.138.172.112", 8082, "postgres", "test", "resume_db")
+      con = PG.connect("3.138.172.112", 5432, "postgres", "test", "resume_db")
       accepted_formats = [".json"]
       Dir.foreach(@resume_directory) do |file|
         if accepted_formats.include?File.extname(file)
@@ -44,7 +43,7 @@ class ReadResume
   end
 
 end
-pdf_resume = ReadResume.new("D:/Ruby-StringsAndArrays/ReadResume")
-connect_db = ReadResume.new("D:/Ruby-StringsAndArrays/ReadResume")
+pdf_resume = ReadResume.new("/home/ubuntu/Ruby-StringsAndArrays/ReadResume")
+connect_db = ReadResume.new("/home/ubuntu/Ruby-StringsAndArrays/ReadResume")
 pdf_resume.read_text_from_pdf
 connect_db.connect_with_db
