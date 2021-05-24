@@ -25,7 +25,7 @@ class ReadResume
   end
   def connect_with_db
     begin
-      con = PG.connect("3.138.172.112", 5432, "postgres", "test", "resume_db")
+      con = PG.connect :dbname => 'resume_db', :user => 'postgres', :password => 'test'
       accepted_formats = [".json"]
       Dir.foreach(@resume_directory) do |file|
         if accepted_formats.include?File.extname(file)
