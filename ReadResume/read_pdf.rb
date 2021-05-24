@@ -15,8 +15,7 @@ class ReadResume
         reader = PDF::Reader.new(file)
         reader.pages.each do |page|
          dictionary_file = {:file_name =>file,:ocr_text=>page.text}
-	 file.slice! ".pdf"
-	 File.write("#{file}.json",JSON.dump(dictionary_file))
+	       File.write("#{file}.json",JSON.dump(dictionary_file))
          #File.open("#{file}.json","w") { |files| files.write(dictionary_file.to_json) }
          p "completed Writing"
         end
